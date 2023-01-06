@@ -1,0 +1,25 @@
+body {
+    background-color: dimgrey;
+}
+
+aside {
+    float: left;
+    background-color: slategrey;
+    width: 15%;
+    padding: 2.5%;
+    height: 100vh;
+    color: aliceblue;
+    border-right: 5px;
+}
+
+aside img {
+    width: 50px;
+    float: left;
+}
+
+aside  ul {list-style: none;}
+
+aside ul li:hover,aside ul a:hover {
+    color: brown;
+    text-decoration: none;
+}
