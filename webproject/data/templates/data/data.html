@@ -5,6 +5,11 @@
 
 {% block string %}
    <h1>data from the database</h1>
-   <p>data</p>
+   {% for art in data_art%}
+   <div class="alert alert-warning" id="table">
+      <p>{{art.anons}}</p>
+      <h2>{{art.main_text}}</h2>
+   </div>
+   {% endfor %}
 {% endblock %}
 
