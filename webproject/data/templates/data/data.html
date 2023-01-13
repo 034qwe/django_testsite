@@ -1,15 +1,16 @@
 {% extends 'main/layout.html' %}
 
 
-{% block title %}data base{% endblock %}
+{% block title %}database{% endblock %}
 
 {% block string %}
    <h1>data from the database</h1>
    {% for art in data_art%}
-   <div class="alert alert-warning" id="table">
-      <p>{{art.anons}}</p>
-      <h2>{{art.main_text}}</h2>
-   </div>
+      <div class="alert alert-warning" id="table">
+         <p>{{art.title}}</p>
+         <h2>{{art.anons}}</h2>
+         <a href="{% url 'news-detail' art.id %}" class="btn btn-warning">read more</a>
+      </div>
    {% endfor %}
 {% endblock %}
 
