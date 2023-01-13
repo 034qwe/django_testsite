@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Articles
-
+from .forms import ArticlesForm
 # Create your views here.
 
 def data(request):
@@ -9,4 +9,18 @@ def data(request):
 
 
 def add(request):
-    return render(request,'data/add.html')
+    error = ''
+    if request.method == 'POST':
+        form = ArticlesForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+        else:
+            error = 'incorrect'
+    form = ArticlesForm()
+
+    data = {
+        'form': form
+    }
+
+    return render(request,'data/add.html',data)

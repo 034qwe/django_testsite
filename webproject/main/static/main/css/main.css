@@ -1,10 +1,10 @@
 body {
-    background-color: dimgrey;
+    background-color:cornflowerblue;
 }
 
 aside {
     float: left;
-    background-color: slategrey;
+    background-color: rgba(99, 99, 99, 0.801);
     width: 15%;
     padding: 2.5%;
     height: 100vh;
@@ -28,5 +28,12 @@ aside ul li:hover,aside ul a:hover {
 div.alert-warning {
     float: left;
     width: 1000px;
+
+}
+
+div.features {
+    float:left;
+    width: 300px;
+    margin-left: 400px;
 
 }
