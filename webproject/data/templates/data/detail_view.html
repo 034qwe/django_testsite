@@ -8,6 +8,8 @@
         <h1>{{ post.title }}</h1> 
         <p>{{post.main_text}}</p>
         <p>{{post.date}}</p>
+        <a href="{% url 'news-delete' post.id  %}" class="btn btn-danger">delete article</a>
+        <a href="{% url 'news-update' post.id  %}" class="btn btn-info">update article</a>
    </div>
 {% endblock %}  
 

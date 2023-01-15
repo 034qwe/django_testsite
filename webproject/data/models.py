@@ -7,5 +7,8 @@ class Articles(models.Model):
     main_text=models.TextField('article')
     date = models.DateField('date of publication')
 
+    def get_absolute_url(self):
+        return f'/news/{self.id}'
+
     def __str__(self):
         return self.title
