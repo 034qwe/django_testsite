@@ -19,3 +19,8 @@ class Scientists(models.Model):
     bio = models.TextField('bio')
     photo = models.ImageField('photo', upload_to="photos/%Y/%m/%d")
     date = models.DateField('date of publication',auto_now=True)
+
+
+    def __str__(self):
+        return self.name
+    
