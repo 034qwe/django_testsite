@@ -6,9 +6,9 @@
 {% block string %}
    <h1>data from the database</h1>
    {% for art in data_art%}
-      <div class="alert alert-warning" id="table">
-         <p>{{art.title}}</p>
-         <h2>{{art.anons}}</h2>
+      <div  class="list-articles" id="table">
+         <h1>{{art.title}}</p>
+         <h5>{{art.anons}}</h2>
          <a href="{% url 'news-detail' art.id %}" class="btn btn-warning">read more</a>
       </div>
    {% endfor %}

@@ -1,5 +1,6 @@
 body {
-    background-color:cornflowerblue;
+    font-family: 'Arial';
+    background-color:rgb(227, 229, 233);
 }
 
 aside {
@@ -25,16 +26,23 @@ aside ul li:hover,aside ul a:hover {
     text-decoration: none;
 }
 
-div.alert-warning {
+div#table{
     float: left;
-    width: 500px;
+    width: 1000px;
+    margin-left: 50px;
+
+}
+
+div#add {
+    float:left;
+    width: 350px;
     margin-left: 300px;
 
 }
 
-div.features {
-    float:left;
-    width: 300px;
-    margin-left: 400px;
-
+div#detail {
+    float:  left;
+    width: 900px;
+    margin-left: 100px;
 }
+

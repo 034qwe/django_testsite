@@ -1,5 +1,5 @@
-from django.shortcuts import render,redirect
-from .models import Articles
+from django.shortcuts import render,redirect, HttpResponse
+from .models import Articles,Scientists
 from .forms import ArticlesForm
 from django.views.generic import DetailView,UpdateView,DeleteView
 # Create your views here.
@@ -8,6 +8,8 @@ def data(request):
     data_articles=Articles.objects.all()
     return render(request,'data/data.html',{"data_art":data_articles})
 
+def login(request):
+    return HttpResponse('login page')
 
 def add(request):
     error = ''
@@ -25,6 +27,7 @@ def add(request):
     }
 
     return render(request,'data/add.html',data)
+
 
 class DataDetailView(DetailView):
     model = Articles #my database
