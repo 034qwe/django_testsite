@@ -8,6 +8,7 @@ def data(request):
     data_articles=Articles.objects.all()
     return render(request,'data/data.html',{"data_art":data_articles})
 
+
 def login(request):
     return HttpResponse('login page')
 
@@ -27,6 +28,9 @@ def add(request):
     }
 
     return render(request,'data/add.html',data)
+
+def show_category(request,cat_id):
+    return HttpResponse(f'{cat_id}')
 
 
 class DataDetailView(DetailView):

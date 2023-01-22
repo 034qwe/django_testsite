@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 # Create your models here.
 class Articles(models.Model):
     title=models.CharField('title',max_length=40)
@@ -18,9 +18,25 @@ class Scientists(models.Model):
     name = models.CharField('name',max_length= 255)
     bio = models.TextField('bio')
     photo = models.ImageField('photo', upload_to="photos/%Y/%m/%d")
-    date = models.DateField('date of publication',auto_now=True)
+    date = models.DateField('date of publication',auto_now=True) 
+    cat = models.ForeignKey('Category',on_delete=models.PROTECT,null=True) #cat + _id
+
+    def get_absolute_url(self):
+        return reverse('post', kwargs={'pk':self.pk})
 
 
     def __str__(self):
         return self.name
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=150,db_index=True)
+
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('category', kwargs={'cat_id':self.pk})
+
     
