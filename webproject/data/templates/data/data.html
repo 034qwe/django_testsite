@@ -1,16 +1,18 @@
 {% extends 'main/layout.html' %}
-
+{% load data_tags %}
 
 {% block title %}database{% endblock %}
 
 {% block string %}
+   {% get_Articles  as Articles %}
    <h1>data from the database</h1>
-   {% for art in data_art%}
+   {% for art in Articles%}
       <div  class="list-articles" id="table">
          <h1>{{art.title}}</p>
          <h5>{{art.anons}}</h2>
          <a href="{% url 'news-detail' art.id %}" class="btn btn-warning">read more</a>
       </div>
    {% endfor %}
+
 {% endblock %}
 

@@ -21,10 +21,13 @@
             <a href="/news"><li>data base</li></a>
             <a href="{% url 'create'%}"><li>add record</li></a>
             <a href="{% url 'login' %}">login</a>
+            <a href="{% url 'data_scientists' %}">scientists</a>
         </ul>
 
         <ul>
-            
+            {% for c in cats %}
+                <li><a href="{{c.get_absolute_url}}">{{c.name}}</a></li>
+            {% endfor %}
         </ul>
     </aside>
     <main>

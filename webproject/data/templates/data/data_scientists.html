@@ -1,0 +1,17 @@
+{% extends 'main/layout.html' %}
+
+
+{% block title %}database{% endblock %}
+
+{% block string %}
+   <h1>data from the database</h1>
+   {% for c  in scientists %}
+      <div  class="list-articles">
+        <h1>{{c.name}}</p>
+        <h5>{{c.bio}}</h2>
+        <h5>{{c.photo}}</h5>
+        
+      </div>
+   {% endfor %}
+{% endblock %}
+

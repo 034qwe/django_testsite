@@ -1,12 +1,19 @@
 from django.shortcuts import render,redirect, HttpResponse
-from .models import Articles,Scientists
+from .models import Articles,Scientists,Category
 from .forms import ArticlesForm
 from django.views.generic import DetailView,UpdateView,DeleteView
 # Create your views here.
 
 def data(request):
-    data_articles=Articles.objects.all()
-    return render(request,'data/data.html',{"data_art":data_articles})
+    cats = Category.objects.all()
+    return render(request,'data/data.html',{'cats':cats})
+
+def data_scientists(request):
+    data_s  = Scientists.objects.all()
+    data_sience = {
+        'scientists':data_s,
+        }
+    return render(request,'data/data_scientists.html',data_sience)
 
 
 def login(request):
@@ -30,7 +37,14 @@ def add(request):
     return render(request,'data/add.html',data)
 
 def show_category(request,cat_id):
-    return HttpResponse(f'{cat_id}')
+    data_articles=Scientists.objects.filter(cat_id=cat_id)
+    cats = Category.objects.all()
+    data = {
+        "data_art":data_articles,
+        'cats':cats,
+        'cat_selected':cat_id
+        }
+    return render(request,'data/data.html',data)
 
 
 class DataDetailView(DetailView):
