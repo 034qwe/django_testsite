@@ -17,6 +17,7 @@ class Articles(models.Model):
 class Scientists(models.Model):
     name = models.CharField('name',max_length= 255)
     bio = models.TextField('bio')
+    slug = models.SlugField(max_length=255,unique=True,db_index=True, verbose_name="URL")
     photo = models.ImageField('photo', upload_to="photos/%Y/%m/%d")
     date = models.DateField('date of publication',auto_now=True) 
     cat = models.ForeignKey('Category',on_delete=models.PROTECT,null=True) #cat + _id
@@ -31,6 +32,7 @@ class Scientists(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=150,db_index=True)
+    slug = models.SlugField(max_length=255,unique=True,db_index=True, verbose_name="URL")
 
 
     def __str__(self):

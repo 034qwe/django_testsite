@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect, HttpResponse
+from django.shortcuts import render,redirect, HttpResponse,get_object_or_404
 from .models import Articles,Scientists,Category
 from .forms import ArticlesForm
 from django.views.generic import DetailView,UpdateView,DeleteView
@@ -64,3 +64,4 @@ class DataDeletelView(DeleteView):
     model = Articles
     template_name = 'data/delete.html'
     success_url = '/'
+
