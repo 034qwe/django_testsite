@@ -4,9 +4,9 @@
 {% block title %}database{% endblock %}
 
 {% block string %}
-   {% get_Articles  as Articles %}
+
    <h1>data from the database</h1>
-   {% for art in Articles%}
+   {% for art in data_art %}
       <div  class="list-articles" id="table">
          <h1>{{art.title}}</p>
          <h5>{{art.anons}}</h2>

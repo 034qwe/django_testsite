@@ -31,13 +31,13 @@ def add(request):
 
     return render(request,'data/add.html',data)
 
-def show_category(request,cat_id):
-    data_articles=Articles.objects.filter(cat_id=cat_id)
+def show_category(request,url_id):
+    data_articles=Articles.objects.filter(categ_id=url_id)
     cats = Category_Articles.objects.all()
     data = {
         "data_art":data_articles,
         'cats':cats,
-        'cat_selected':cat_id
+        'cat_selected':url_id
         }
     return render(request,'data/data.html',data)
 

@@ -7,6 +7,7 @@
     <div class="features" id="detail">
         <h1>{{ post.title }}</h1> 
         <p>{{post.main_text}}</p>
+        <p><img class="img-article-left" src="{{post.photo.url}}"></p> 
         <p>{{post.date}}</p>
         <a href="{% url 'news-delete' post.id  %}" class="btn btn-danger">delete article</a>
         <a href="{% url 'news-update' post.id  %}" class="btn btn-info">update article</a>
