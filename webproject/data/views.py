@@ -5,8 +5,9 @@ from django.views.generic import DetailView,UpdateView,DeleteView
 # Create your views here.
 
 def data(request):
+    all_articles = Articles.objects.all()
     cats = Category_Articles.objects.all()
-    return render(request,'data/data.html',{'cats':cats})
+    return render(request,'data/data_full.html',{'articles':all_articles,'cats':cats,})
 
 
 
@@ -41,11 +42,20 @@ def show_category(request,url_id):
         }
     return render(request,'data/data.html',data)
 
+def show_post(request,post_slug):
+    post = get_object_or_404(Articles,slug=post_slug) 
+    contxt = {
+        'post':'post',
+        "cat_selected": post.categ_id
+    }
 
-class DataDetailView(DetailView):
-    model = Articles #my database
-    template_name = 'data/detail_view.html'
-    context_object_name = 'post' #data_view.html h1
+    return render(request,'data/detail_view.html',context=contxt )
+
+
+# class DataDetailView(DetailView):
+#     model = Articles #my database
+#     template_name = 'data/detail_view.html'
+#     context_object_name = 'post' #data_view.html h1
 
 
 class DataUpdatelView(UpdateView):
