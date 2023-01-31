@@ -10,7 +10,7 @@
       <div  class="list-articles" id="table">
          <h1>{{art.title}}</p>
          <h5>{{art.anons}}</h2>
-         <a href="{% url 'news-detail' art.id %}" class="btn btn-warning">read more</a>
+         <a href="{% url 'news-detail' art.slug %}" class="btn btn-warning">read more</a>
       </div>
    {% endfor %}
 
