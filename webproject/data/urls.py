@@ -9,5 +9,6 @@ urlpatterns = [
     path('<int:pk>/update',views.DataUpdatelView.as_view(), name='news-update'),
     path('<int:pk>/delete',views.DataDeletelView.as_view(), name='news-delete'),
     path('login/',views.login,name='login'),
-    path('category/<slug:url_id>/',views.show_category, name='category'), 
+    path('category/<slug:url_id>/',views.show_category, name='category'),
+    path('create',views.add_page,name='add'),
 ]
