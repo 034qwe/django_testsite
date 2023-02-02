@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect, HttpResponse,get_object_or_404
 from .models import Articles,Category_Articles
-from .forms import ArticlesForm
+from .forms import ArticlesForm,AddPost
 from django.views.generic import DetailView,UpdateView,DeleteView
 # Create your views here.
 
@@ -9,7 +9,17 @@ def data(request):
     cats = Category_Articles.objects.all()
     return render(request,'data/data_full.html',{'articles':all_articles,'cats':cats,})
 
-
+def add_page(request):
+    if request.method == 'POST':
+        form = AddPost(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+    else:
+        form = AddPost()
+    context = {
+        'form':form
+    }
+    render(request,'data/add_2.html',context=context)
 
 
 def login(request):
@@ -61,7 +71,7 @@ def show_post(request,post_slug):
 class DataUpdatelView(UpdateView):
     model = Articles
     template_name = 'data/add.html'
-
+    
     form_class = ArticlesForm #fields in forms.py.ArticlesForm  
 
 
