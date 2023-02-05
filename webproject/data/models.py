@@ -5,12 +5,12 @@ from django.urls import reverse
 
 class Articles(models.Model):
     title=models.CharField('title',max_length=40)
-    slug = models.SlugField(max_length=255,unique=True,db_index=True, verbose_name="URL")
     anons =models.CharField('beginning',max_length=250)
     main_text=models.TextField('article')
-    photo = models.ImageField('photo', upload_to="photos/%Y/%m/%d")
-    date = models.DateField('date of publication',auto_created=True)
-    categ = models.ForeignKey('Category_Articles',on_delete=models.PROTECT,null=True,) #+= _id
+    photo = models.ImageField('photo', upload_to="photos/%Y/%m/%d",null=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True)
+    categ = models.ForeignKey('Category_Articles',on_delete=models.PROTECT,) #+= _id
     slug = models.SlugField(max_length=255,unique=True,db_index=True, verbose_name="URL")
 
 

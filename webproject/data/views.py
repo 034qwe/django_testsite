@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect, HttpResponse,get_object_or_404
-from .models import Articles,Category_Articles
-from .forms import ArticlesForm,AddPost
+from .models import *
+from .forms import *
 from django.views.generic import DetailView,UpdateView,DeleteView
 # Create your views here.
 
@@ -9,38 +9,24 @@ def data(request):
     cats = Category_Articles.objects.all()
     return render(request,'data/data_full.html',{'articles':all_articles,'cats':cats,})
 
-def add_page(request):
-    if request.method == 'POST':
-        form = AddPost(request.POST)
-        if form.is_valid():
-            print(form.cleaned_data)
-    else:
-        form = AddPost()
-    context = {
-        'form':form
-    }
-    render(request,'data/add_2.html',context=context)
-
-
 def login(request):
     return HttpResponse('login page')
 
 def add(request):
-    error = ''
     if request.method == 'POST':
-        form = ArticlesForm(request.POST)
+        form = ArticlesForm(request.POST,request.FILES)
         if form.is_valid():
-            form.save()
-            return redirect('home')
+                form.save
+                return redirect('/')
         else:
-            error = 'incorrect'
-    form = ArticlesForm()
-
-    data = {
-        'form': form
+            HttpResponse('error')
+        
+    else:
+        form = ArticlesForm()
+    context = {
+        'form':form
     }
-
-    return render(request,'data/add.html',data)
+    return render(request,'data/add.html',context)
 
 def show_category(request,url_id):
     data_articles=Articles.objects.filter(slug=url_id)
