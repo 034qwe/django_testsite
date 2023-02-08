@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect, HttpResponse,get_object_or_404
 from .models import *
 from .forms import *
-from django.views.generic import DetailView,UpdateView,DeleteView
+from django.views.generic import DetailView,UpdateView,DeleteView,ListView
 # Create your views here.
 
 def data(request):
@@ -16,7 +16,7 @@ def add(request):
     if request.method == 'POST':
         form = ArticlesForm(request.POST,request.FILES)
         if form.is_valid():
-                form.save
+                form.save()
                 return redirect('/')
         else:
             HttpResponse('error')
