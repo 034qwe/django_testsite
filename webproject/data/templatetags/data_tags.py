@@ -6,5 +6,5 @@ register = template.Library()
 
 
 @register.simple_tag()
-def get_Articles():
+def get_category():
     return Category_Articles.objects.all()
