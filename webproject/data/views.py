@@ -17,7 +17,8 @@ class DataPage(ListView):
 #     return render(request,'data/data_full.html',{'articles':all_articles,})
 
 def login(request):
-    return HttpResponse('login page')
+    a = Articles.objects.filter(pk__in=[1])
+    return HttpResponse(f'login page {a}')
 
 
 class AddPage(CreateView):
@@ -43,21 +44,20 @@ class AddPage(CreateView):
 
 
 
-def show_category(request,cat_name):
-    data_articles=Articles.objects.filter(slug=cat_name)
+def show_category(request,cat_slug):
+    data_articles=Articles.objects.filter(categ__name=cat_slug)
     data = {
         "data_art":data_articles, 
-        'cat_selected':cat_name
         }
     return render(request,'data/data.html',data)
 
-def show_post(request,post_slug):
-    post = get_object_or_404(Articles,slug=post_slug) 
-    contxt = {
-        'post':post,
-    }
+# def show_post(request,post_slug):
+#     post = get_object_or_404(Articles,slug=post_slug) 
+#     contxt = {
+#         'post':post,
+#     }
 
-    return render(request,'data/detail_view.html',context=contxt )
+#     return render(request,'data/detail_view.html',context=contxt )
 
 
 class ShowPost(DetailView):
