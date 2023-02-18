@@ -14,11 +14,11 @@
 <body>
     <aside>
         {% get_category as category %}
-        <img src="{% static 'main/img/logo.png' %}" alt="logo">
-        <span class="logo">first site</span> 
-        <h3>Navigation</h3>
+        <img src="{% static 'main/img/einstein.jpg' %}" alt="logo">
+        <span class="logo">great people </span> 
+        <h3>Navigation</h3> 
         <ul>
-            <a href="/"><li>data base</li></a>
+            <a href="/"><li>all posts</li></a>
             <a href="{% url 'create'%}"><li>add record</li></a>
             <a href="{% url 'login' %}">login</a><br>
         </ul>

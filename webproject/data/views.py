@@ -3,6 +3,7 @@ from .models import *
 from .forms import *
 from django.urls import reverse_lazy
 from django.views.generic import DetailView,UpdateView,DeleteView,ListView,CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 
@@ -17,14 +18,14 @@ class DataPage(ListView):
 #     return render(request,'data/data_full.html',{'articles':all_articles,})
 
 def login(request):
-    a = Articles.objects.filter(pk__in=[1])
-    return HttpResponse(f'login page {a}')
+    return HttpResponse('login page')
 
 
-class AddPage(CreateView):
+class AddPage(LoginRequiredMixin, CreateView):
     form_class =  ArticlesForm
     template_name = 'data/add.html' 
     success_url = reverse_lazy('data')
+    login_url = reverse_lazy('data')
 
 # def add(request):
 #     if request.method == 'POST':

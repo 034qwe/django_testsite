@@ -15,8 +15,10 @@ aside {
 }
 
 aside img {
-    width: 50px;
+    width: 100px;
     float: left;
+    max-height: 140px;
+    margin-right: 50px;
 }
 
 aside  ul {list-style: none;}

@@ -1,11 +1,11 @@
 {% extends 'main/layout.html' %}
 {% load data_tags %}
 
-{% block title %}database{% endblock %}
+{% block title %}all posts{% endblock %}
 
 {% block string %}
 
-   <h1>data from the database</h1>
+   <h1>Posts</h1>
    {% for art in articles %}
       <div  class="list-articles" id="table">
          <h1>{{art.title}}</p>
