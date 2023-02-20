@@ -8,6 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class DataPage(ListView):
+    paginate_by = 1
     model = Articles
     template_name = 'data/data_full.html'
     context_object_name = 'articles'

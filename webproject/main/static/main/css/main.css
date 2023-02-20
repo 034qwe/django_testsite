@@ -48,3 +48,6 @@ div#detail {
     margin-left: 100px;
 }
 
+nav {
+    float: unset;
+}
