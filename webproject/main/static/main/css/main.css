@@ -48,6 +48,8 @@ div#detail {
     margin-left: 100px;
 }
 
-nav {
-    float: unset;
+form#useregister {
+    float:left;
+    width: 350px;
+    margin-left: 300px;
 }
