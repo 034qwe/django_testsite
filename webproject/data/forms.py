@@ -2,6 +2,8 @@ from .models import *
 from django import forms
 from django.core.exceptions import ValidationError
 from django.forms import ModelForm,TextInput,DateInput,Textarea,ImageField
+from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
+from django.contrib.auth.models import User
 
 
 class ArticlesForm(ModelForm):
@@ -39,6 +41,16 @@ class ArticlesForm(ModelForm):
 
         }
     
+class RegisterUserForm(UserCreationForm):
+    username = forms.CharField(label='login',widget=forms.TextInput(attrs={'class':'form-control','placeholder': 'login'}))
+    password1 = forms.CharField(label='password',widget=forms.PasswordInput(attrs={'class':'form-control','placeholder': 'password'}))
+    email = forms.EmailField(label='email',widget=forms.EmailInput(attrs={'class':'form-control','placeholder':'email'}))
+    password2 = forms.CharField(label='repeat password',widget=forms.PasswordInput(attrs={'class':'form-control','placeholder': 'repeat password'}))
+    class Meta:
+        model = User
+        fields = ('username','password1','password2')
 
 
-
+class LoginUserForm(AuthenticationForm):
+    username = forms.CharField(label='login',widget=forms.TextInput(attrs={'class':'form-control','placeholder': 'login'}))
+    password = forms.CharField(label='password',widget=forms.PasswordInput(attrs={'class':'form-control','placeholder': 'password'}))

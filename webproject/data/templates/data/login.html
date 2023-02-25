@@ -1,0 +1,23 @@
+{% extends 'main/layout.html' %}
+
+
+{% block title %}Register{% endblock %}
+
+
+{% block string %}
+
+<form method="post" id="useregister">
+    {% csrf_token %}
+
+    <div class="'form-error">{{ form.non_field_errors }}</div>
+    
+    {% for f in form %}
+        <p><label class="form-label" for="{{ f.id_for_label }}"></label>{{ f }}</p>
+        <div class="form-error">{{ f.errors }}</div>
+    {% endfor %}
+
+
+    <button type="submit">login</button>
+</form>
+
+{% endblock %}

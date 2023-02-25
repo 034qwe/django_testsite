@@ -4,6 +4,8 @@ from .forms import *
 from django.urls import reverse_lazy
 from django.views.generic import DetailView,UpdateView,DeleteView,ListView,CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView
+from django.contrib.auth import logout,login
 # Create your views here.
 
 
@@ -17,10 +19,6 @@ class DataPage(ListView):
 # def data(request):
 #     all_articles = Articles.objects.all()
 #     return render(request,'data/data_full.html',{'articles':all_articles,})
-
-def login(request):
-    return HttpResponse('login page')
-
 
 class AddPage(LoginRequiredMixin, CreateView):
     form_class =  ArticlesForm
@@ -81,3 +79,23 @@ class DataDeletelView(DeleteView):
     template_name = 'data/delete.html'
     success_url = '/'
 
+class RegisterUser(CreateView):
+    form_class = RegisterUserForm
+    template_name = 'data/register.html'
+    success_url = reverse_lazy('login') 
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request,user)
+        return redirect('data')
+
+class LoginUser(LoginView):
+    form_class = LoginUserForm
+    template_name = 'data/login.html'
+    def get_success_url(self):
+        return reverse_lazy('data')
+    
+def logout_user(request):
+    logout(request)
+
+    return redirect('data')
