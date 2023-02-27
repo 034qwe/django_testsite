@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 from django.forms import ModelForm,TextInput,DateInput,Textarea,ImageField
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth.models import User
+from captcha.fields import CaptchaField
 
 
 class ArticlesForm(ModelForm):
@@ -54,3 +55,9 @@ class RegisterUserForm(UserCreationForm):
 class LoginUserForm(AuthenticationForm):
     username = forms.CharField(label='login',widget=forms.TextInput(attrs={'class':'form-control','placeholder': 'login'}))
     password = forms.CharField(label='password',widget=forms.PasswordInput(attrs={'class':'form-control','placeholder': 'password'}))
+
+class ContactForm(forms.Form):
+    name = forms.CharField(label='name',widget=forms.TextInput(attrs={'class':'form-control','placeholder': 'name'}))
+    email = forms.EmailField(label='email',widget=forms.EmailInput(attrs={'class':'form-control','placeholder': 'email'}))
+    content = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','placeholder': 'text'}))
+    captcha = CaptchaField()

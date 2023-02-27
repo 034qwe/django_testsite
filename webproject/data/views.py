@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect, HttpResponse,get_object_or_404
 from .models import *
 from .forms import *
 from django.urls import reverse_lazy
-from django.views.generic import DetailView,UpdateView,DeleteView,ListView,CreateView
+from django.views.generic import DetailView,UpdateView,DeleteView,ListView,CreateView,FormView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout,login
@@ -10,7 +10,7 @@ from django.contrib.auth import logout,login
 
 
 class DataPage(ListView):
-    paginate_by = 1
+    paginate_by = 2
     model = Articles
     template_name = 'data/data_full.html'
     context_object_name = 'articles'
@@ -99,3 +99,14 @@ def logout_user(request):
     logout(request)
 
     return redirect('data')
+
+class ContactView(FormView):
+    form_class = ContactForm
+    template_name = 'data/contact.html'
+    success_url = reverse_lazy('/')
+
+
+    def form_valid(self,form):
+        print(form.cleaned_data)
+        return redirect('/')
+  
