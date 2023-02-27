@@ -20,6 +20,7 @@
         <ul>
             <a href="/"><li>all posts</li></a>
             <a href="{% url 'create'%}"><li>add record</li></a>
+            <a href="{% url 'contact' %}">complaints</a>
             {% if request.user.is_authenticated %}
             <li>{{user.username}}<a href="{% url 'logout' %}">/quit</a><br></li>
             {% else %}
