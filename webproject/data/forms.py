@@ -59,5 +59,5 @@ class LoginUserForm(AuthenticationForm):
 class ContactForm(forms.Form):
     name = forms.CharField(label='name',widget=forms.TextInput(attrs={'class':'form-control','placeholder': 'name'}))
     email = forms.EmailField(label='email',widget=forms.EmailInput(attrs={'class':'form-control','placeholder': 'email'}))
-    content = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','placeholder': 'text'}))
+    content = forms.CharField(label='text',widget=forms.Textarea(attrs={'class':'form-control','placeholder': ' questions or complaints'}))
     captcha = CaptchaField()
